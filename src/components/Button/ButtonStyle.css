@@ -1,18 +1,5 @@
 .ButtonStyle{
-    border-left: 4px outset rgb(94, 94, 232);
-    border-top: 4px outset rgb(94, 94, 232);
-    border-right: 4px outset rgb(232, 94, 195);
-    border-bottom: 4px outset rgb(232, 94, 195);
-    border-top-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    background: transparent;
-    margin-bottom: 10px;
     color: black;
-    font-size: 16px;
-    width: 80px;
-    height: 33px;
-    font-family: 'Roboto', sans-serif;
-}
-.ButtonStyle:focus{
-    outline: none;
+    width: 100px;
+    height: 44px;
 }

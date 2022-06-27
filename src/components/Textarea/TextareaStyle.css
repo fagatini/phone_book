@@ -1,6 +1,5 @@
-.InputStyle
+.TextareaStyle
 {
-    padding: 8px 12px 8px 12px;
     color: black;
     width: 100%;
     height: fit-content;
@@ -8,7 +7,3 @@
     box-shadow: none;
     line-height: 20px;
 }
-
-input:invalid {
-    background-color: white;
-  }

@@ -1,0 +1,21 @@
+.AddButtonStyle{
+    width:35px;
+    height:35px;
+    visibility: hidden;
+    position: relative;
+}
+
+.imgStyleAdd{
+    width:35px;
+    height:35px;
+    top:-12px;
+    left:2px;
+    visibility: visible;
+    position: absolute;
+}
+
+.AddBWrapper{
+    display: flex;
+    justify-content: center;
+
+}

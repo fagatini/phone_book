@@ -1,0 +1,16 @@
+.ChangeVievButtonStyle{
+    width:20px;
+    height:20px;
+    position:absolute; 
+    right: 15px;
+    visibility: hidden;
+}
+
+.imgStyle{
+    width:20px;
+    height:20px;
+    right: 10px;
+    visibility: visible;
+    top: 9px;
+    position: relative;
+}

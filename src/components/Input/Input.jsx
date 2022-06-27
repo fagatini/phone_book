@@ -2,10 +2,9 @@
 import React from 'react'
 import { InputStyle } from './InputStyle.css'
 
-const Input = (props)=>
-{
+const Input = React.forwardRef((props, ref) => {
     return (
-        <input {...props} className='InputStyle'></input>
+        <input {...props} className='InputStyle ColorStyle' ref={ref}></input>
     )
-}
+})
 export default Input

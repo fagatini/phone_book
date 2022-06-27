@@ -8,14 +8,33 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 250px;
+  width: 320px;
   height: 100vh;
+  position: relative;
 }
 
 .AppWrapperHor{
   display: flex;
   justify-content: space-around;
   flex-direction: row;
+}
+
+.ColorStyle{
+  border-left: 4px outset rgb(94, 94, 232);
+  border-top: 4px outset rgb(94, 94, 232);
+  border-right: 4px outset rgb(232, 94, 195);
+  border-bottom: 4px outset rgb(232, 94, 195);
+  border-top-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background: transparent;
+  margin-bottom: 30px;
+  font-family: 'Roboto';
+  font-size: 16px;
+}
+
+.ColorStyle:focus{
+  outline: none;
+  background-color: rgb(230, 230, 230);
 }
 
 @media (prefers-reduced-motion: no-preference) {

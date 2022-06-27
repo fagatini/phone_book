@@ -2,10 +2,9 @@
 import React from 'react'
 import { ButtonStyle } from './ButtonStyle.css'
 
-const Button = ({children, ...props})=>
-{
+const Button = ({ children, ...props }) => {
     return (
-        <button type="button" {...props} className='ButtonStyle'>
+        <button type="button" {...props} className='ButtonStyle ColorStyle'>
             {children}
         </button>
     )
