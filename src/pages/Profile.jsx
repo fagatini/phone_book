@@ -44,8 +44,8 @@ export const Profile = () => {
                             <PhoneRequest>{{ name: 'Oleg Sidorov' }}</PhoneRequest>
                             <hr style={{ width: 200 }}></hr>
                             <PhoneRequest>{{ name: 'Igor kirrilov' }}</PhoneRequest>
-                            {/* <hr style={{ width: 200 }}></hr>
-                            <PhoneRequest>{{ name: 'Valeriy Savchenko' }}</PhoneRequest> */}
+                            <hr style={{ width: 200 }}></hr>
+                            <PhoneRequest>{{ name: 'Valeriy Savchenko' }}</PhoneRequest>
                         </div>
                     </div>
                 </div>
