@@ -1,0 +1,17 @@
+.mainDataBlock {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-bottom: 30px;
+}
+
+.vertBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.pictureSize {
+    width: 120px;
+    height: 120px;
+}

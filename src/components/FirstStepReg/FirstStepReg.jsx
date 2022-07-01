@@ -24,17 +24,14 @@ function FirstStepReg({ handleClick }) {
     setIsPasswordShowed((prev) => !prev)
     passwordFieldElem.current.type = !isPasswordShowed ? 'text' : 'password'
   }
-  const handleConfirmPasswordShow = async () => {
+  const handleConfirmPasswordShow = () => {
     setIsConfPasswordShowed((prev) => !prev)
     confPasswordFieldElem.current.type = !isConfPasswordShowed ? 'text' : 'password'
     // сет не успевает отработать, таким образом в тернарке всё еще false, хотя он и до смены был false
   }
 
-  const emailIsNotUsed = (Email) => {
-    return true;
-  };
   const confirmAuthData = () => {
-    if (pass === secPass && emailIsNotUsed(email) && pass.length >= 5) {
+    if (pass === secPass) {
       setAuthData({ email, pass });
     }
   };

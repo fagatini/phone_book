@@ -11,7 +11,7 @@ function SecondStepReg({ handleClick }) {
   const [name, setName] = useState("");
   const [midleName, setMidleName] = useState("");
   const [secondName, setSecondName] = useState("");
-  const [birthDate, setBirthDate] = useState("");
+  const [birthDate, setBirthDate] = useState({ value: "", isValid: false });
   const [workPhoneNum, setWorkPhoneNum] = useState("");
   const [phoneNum, setPhoneNum] = useState([]);
   const [MainData, setMainData] = useState({ name: '', midleName: '', secondName: '', birthDate: '', workPhoneNum: '', phoneNum: {} });
@@ -33,11 +33,13 @@ function SecondStepReg({ handleClick }) {
             <Input
               type="text"
               placeholder="first name"
+              required
               value={name}
               onChange={(e) => setName(e.target.value)}
             ></Input>
             <Input
               type="text"
+              required
               placeholder="midle name"
               value={midleName}
               onChange={(e) => setMidleName(e.target.value)}
@@ -45,17 +47,19 @@ function SecondStepReg({ handleClick }) {
             <Input
               type="text"
               placeholder="second name"
+              required
               value={secondName}
               onChange={(e) => setSecondName(e.target.value)}
             ></Input>
             <Input
+              required
               type="date"
               value={birthDate}
               onChange={(e) => setBirthDate(e.target.value)}
             ></Input>
             <Input
               type="tel"
-              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required
+              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
               placeholder="work phone number"
               value={workPhoneNum}
               onChange={(e) => setWorkPhoneNum(e.target.value)}
@@ -65,13 +69,12 @@ function SecondStepReg({ handleClick }) {
                 <Input
                   key={index}
                   type="tel"
-                  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required
+                  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                   placeholder="phone number"
                   value={number}
                   onChange={(e) => handleOnNumberChange(e, index)}
                 ></Input>
               ))}
-              {/* добавить кнопку здесь справа с дейстивием */}
             </div>
             <AddButton src={plus} onClick={handleOnClick}></AddButton>
             <div className="AppWrapperHor">

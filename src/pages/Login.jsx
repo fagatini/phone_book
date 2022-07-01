@@ -28,8 +28,13 @@ function Login({ handleClick }) {
     }
     const login = () => {
         // использовать endpoint для входа
-        let id = 2
         if (pass === '123' && email === 'xxx') {
+            let id = 1
+            sessionStorage.setItem("isLoggedIn", id);
+            navigate(`/account:${id}` + location.search)
+        }
+        if (pass === '321' && email === 'yyy') {
+            let id = 2
             sessionStorage.setItem("isLoggedIn", id);
             navigate(`/account:${id}` + location.search)
         }
@@ -57,8 +62,8 @@ function Login({ handleClick }) {
                         <ChangeVievButton isUsed={isPasswordShowed} srcIsUsed={closetEye} srcNotUsed={eye} onClick={handlePasswordShow} ></ChangeVievButton>
                     </div>
                     <div className="AppWrapperHor">
-                        <Button onClick={() => registration()}>sign up</Button>
                         <Button onClick={() => login()}>log in</Button>
+                        <Button onClick={() => registration()}>sign up</Button>
                     </div>
                 </div>
             </div>
