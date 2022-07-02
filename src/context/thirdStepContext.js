@@ -6,7 +6,7 @@ let defaultValue = {
   workPlace: null,
   aboutMe: null,
   photoURL: null,
-  setF: () => {},
+  setFunction: () => {},
 };
 
 export const ThirdStepContext = createContext(defaultValue);

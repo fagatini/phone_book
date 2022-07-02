@@ -6,8 +6,10 @@ let defaultValue = {
   secondName: null,
   birthDate: null,
   workPhoneNum: null,
-  phoneNum: null,
-  setF: () => {},
+  phoneNumber: null,
+  isShowBirthdate: null,
+  isShowNums: null,
+  setFunction: () => {},
 };
 
 export const SecondStepContext = createContext(defaultValue);

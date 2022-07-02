@@ -1,5 +1,5 @@
 import { createContext } from "react";
 
-let defaultValue = { login: null, pass: null, setF: () => {} };
+let defaultValue = { email: null, password: null, setFunction: () => {} };
 
 export const FirstStepContext = createContext(defaultValue);

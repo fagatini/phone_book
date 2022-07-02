@@ -46,10 +46,11 @@
 .externalBlock {
   display: flex;
   justify-content: space-around;
-  height: calc(100vh - 170px);
-  align-items: flex-start;
+  height: calc(100vh - 70px);
+  align-items: center;
   flex-direction: row;
-  padding-top: 100px;
+  width: 100vw;
+  /* padding-top: 100px; */
 }
 
 .vertBlock {
@@ -62,6 +63,16 @@
   width: 100vw;
   height: 70px;
   background: linear-gradient(to bottom right, rgb(94, 94, 232), rgb(232, 94, 195));
+}
+
+.dataWrapper {
+  display: flex;
+  justify-content: space-evenly;
+  /* height: calc(100vh - 70px); */
+  height: fit-content;
+  align-items: flex-start;
+  flex-direction: row;
+  width: 100%;
 }
 
 @media (prefers-reduced-motion: no-preference) {

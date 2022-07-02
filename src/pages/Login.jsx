@@ -1,5 +1,5 @@
 import React from "react";
-import { useContext, useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import Button from "../components/Button/Button";
 import Input from "../components/Input/Input";
 import ChangeVievButton from "../components/ChangeVievButton/ChangeVievButton";
@@ -7,7 +7,7 @@ import eye from '../pictures/eye.png';
 import closetEye from '../pictures/hidden.png';
 import { sendPostRequest } from "../axios/hooks";
 
-import { useNavigate, Navigate, useLocation } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 
 function Login({ handleClick }) {
     const [email, setEmail] = useState("");
@@ -24,10 +24,9 @@ function Login({ handleClick }) {
     }
 
     let navigate = useNavigate();
-    let location = useLocation();
 
     const registration = () => {
-        navigate('/registration' + location.search)
+        navigate('/registration')
     }
     const login = async () => {
         if (email !== '' && pass !== '') {
@@ -38,7 +37,7 @@ function Login({ handleClick }) {
             if (response.error) {
                 if (response.error === "User is not exist") {
                     setIsUserExist(false)
-                    setIsRightPass(false)
+                    // setIsRightPass(false)
                 }
                 else if (response.error === "Incorrect password") {
                     setIsRightPass(false)
@@ -46,7 +45,7 @@ function Login({ handleClick }) {
             }
             else if (response.message === "User signed in") {
                 sessionStorage.setItem("isLoggedIn", response.id);
-                navigate(`/account:${response.id}` + location.search)
+                navigate(`/account:${response.id}`)
             }
         }
     }
@@ -78,12 +77,12 @@ function Login({ handleClick }) {
                         ></Input>
                         <ChangeVievButton isUsed={isPasswordShowed} srcIsUsed={closetEye} srcNotUsed={eye} onClick={handlePasswordShow} ></ChangeVievButton>
                     </div>
-                    <div className="AppWrapperHor">
+                    <div className="AppWrapperHor" style={{ position: 'relative' }}>
                         <Button onClick={() => login()}>log in</Button>
                         <Button onClick={() => registration()}>sign up</Button>
+                        {!isUserExist ? <div style={{ color: 'red', textAlign: "center", position: 'absolute', top: -99 }}>user does not exist</div> : <></>}
+                        {!isRightPass ? <div style={{ color: 'red', textAlign: "center", position: 'absolute', top: -26 }}>wrong password</div> : <></>}
                     </div>
-                    {/* {!isUserExist ? <div style={{ color: 'red', textAlign: "center" }}>user is not exist</div> : <></>}
-                    {!isRightPass ? <div style={{ color: 'red', textAlign: "center" }}>wrong password</div> : <></>} */}
                 </div>
             </div>
         </>

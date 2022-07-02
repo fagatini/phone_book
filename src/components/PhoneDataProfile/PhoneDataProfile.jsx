@@ -10,7 +10,7 @@ export const PhoneDataProfile = ({ children }) => {
                 {children.phoneNumber.map((number, index) => (
                     <div key={index}>
                         <hr style={{ width: 100 }}></hr>
-                        <div className="divInfo" style={{ justifyContent: 'center' }}>personal phone {index + 1}) {children.phoneNumber[index]}</div>
+                        <div className="divInfo" style={{ justifyContent: 'center' }}>personal phone {index + 1}: {children.phoneNumber[index]}</div>
                     </div>
                 ))}
             </div>

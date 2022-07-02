@@ -33,20 +33,22 @@ export const Profile = () => {
         <div>
             <div className="header"></div>
             <div className="externalBlock">
-                <div className="vertBlock">
-                    <MainDataProfile isShowBd={options.isShowBirthdate}>{{ photoSrc: subData.photoURL, birthdate: mainData.birthDate, FCs: { firstName: mainData.firstName, midleName: mainData.midleName, secondName: mainData.secondName } }}</MainDataProfile>
-                    <SubDataProfile>{{ email: authData.email, workData: { department: subData.department, post: subData.post, workPlace: subData.workPlace }, aboutMe: subData.aboutMe }}</SubDataProfile>
-                </div>
-                <div className="vertBlock">
-                    <PhoneDataProfile>{{ workPhoneNum: mainData.workPhoneNum, phoneNumber: phoneNumber }}</PhoneDataProfile>
-                    <div className="ColorStyle divInfo vertBlock">
-                        <div style={{ overflow: 'auto', maxHeight: 296 }}>
-                            <PhoneRequest>{{ name: 'Oleg Sidorov' }}</PhoneRequest>
-                            <hr style={{ width: 200 }}></hr>
-                            <PhoneRequest>{{ name: 'Igor kirrilov' }}</PhoneRequest>
-                            <hr style={{ width: 200 }}></hr>
-                            <PhoneRequest>{{ name: 'Valeriy Savchenko' }}</PhoneRequest>
+                <div className="dataWrapper">
+                    <div className="vertBlock">
+                        <MainDataProfile isShowBd={options.isShowBirthdate}>{{ photoSrc: subData.photoURL, birthdate: mainData.birthDate, FCs: { firstName: mainData.firstName, midleName: mainData.midleName, secondName: mainData.secondName } }}</MainDataProfile>
+                        <PhoneDataProfile>{{ workPhoneNum: mainData.workPhoneNum, phoneNumber: phoneNumber }}</PhoneDataProfile>
+                        <div className="ColorStyle divInfo vertBlock">
+                            <div style={{ overflow: 'auto', maxHeight: 296 }}>
+                                <PhoneRequest>{{ name: 'Oleg Sidorov' }}</PhoneRequest>
+                                <hr style={{ width: 200 }}></hr>
+                                <PhoneRequest>{{ name: 'Igor kirrilov' }}</PhoneRequest>
+                                <hr style={{ width: 200 }}></hr>
+                                <PhoneRequest>{{ name: 'Valeriy Savchenko' }}</PhoneRequest>
+                            </div>
                         </div>
+                    </div>
+                    <div className="vertBlock">
+                        <SubDataProfile>{{ email: authData.email, workData: { department: subData.department, post: subData.post, workPlace: subData.workPlace }, aboutMe: subData.aboutMe }}</SubDataProfile>
                     </div>
                 </div>
             </div>

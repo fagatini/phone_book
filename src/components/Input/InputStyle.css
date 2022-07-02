@@ -16,6 +16,10 @@
 /* input:invalid {
     border-color: red;
 } */
+/* 
+input:invalid:not(:focus) {
+    border-color: red;
+} */
 /* input:valid {
     background-color: green;
 } */
