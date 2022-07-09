@@ -1,9 +1,9 @@
 import { Navigate } from "react-router-dom";
 
 export const RequireAuth = ({ children }) => {
-    let isLoggedIn = sessionStorage.getItem("isLoggedIn") === null ? false : true;
+    let isAdmin = sessionStorage.getItem("isAdmin") === null ? false : true;
 
-    if (!isLoggedIn) {
+    if (!isAdmin) {
         return <Navigate to="/" replace={true} />;
     }
 

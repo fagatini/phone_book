@@ -5,6 +5,7 @@ import Input from "../Input/Input";
 import { SecondStepContext } from "../../context/secondStepContext";
 import AddButton from "../AddButton/AddButton";
 import plus from '../../pictures/add.png'
+import CheckboxInput from "../CheckboxInput/CheckboxInput";
 
 function SecondStepReg({ handleClick }) {
   const context = useContext(SecondStepContext)
@@ -28,7 +29,7 @@ function SecondStepReg({ handleClick }) {
     setPhoneNumber([...phoneNumber, ''])
   }
 
-  const confirmMainData = (func, arg) => {
+  const confirmMainData = (arg) => {
     let isPhonesCorrect = true
     phoneNumber.forEach(element => {
       isPhonesCorrect = isPhonesCorrect && (element[0] === '+' && element.length >= 12)
@@ -47,7 +48,7 @@ function SecondStepReg({ handleClick }) {
     }
     else {
       context.setFunction({ firstName, midleName, secondName, birthDate, workPhoneNum, phoneNumber, isShowBirthdate, isShowNums })
-      func(arg)
+      handleClick(arg)
     }
   }
 
@@ -104,12 +105,12 @@ function SecondStepReg({ handleClick }) {
           </div>
           <AddButton src={plus} onClick={handleOnClick}></AddButton>
           <div className="AppWrapperHor">
-            <input type='checkbox'></input><div>hide birthdate</div>
-            <input type='checkbox'></input><div>hide numbers</div>
+            <CheckboxInput state={isShowBirthdate} setState={setIsShowBirthdate}>show birthdate</CheckboxInput>
+            <CheckboxInput state={isShowNums} setState={setIsShowNums}>show numbers</CheckboxInput>
           </div>
           <div className="AppWrapperHor">
-            <Button onClick={() => confirmMainData(handleClick, -1)}>back</Button>
-            <Button onClick={() => confirmMainData(handleClick, 1)}>next</Button>
+            <Button onClick={() => confirmMainData(-1)}>back</Button>
+            <Button onClick={() => confirmMainData(1)}>next</Button>
           </div>
         </div>
       </div>

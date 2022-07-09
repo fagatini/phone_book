@@ -9,78 +9,87 @@ import { sendPostRequest } from "../axios/hooks";
 
 import { useNavigate } from "react-router-dom";
 
-function Login() {
+export function AdminLogin() {
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
     const [isPasswordShowed, setIsPasswordShowed] = useState(false);
     const [isUserExist, setIsUserExist] = useState(true)
     const [isRightPass, setIsRightPass] = useState(true)
 
-    const passwordFieldElem = useRef(null)
-    const EmailField = useRef(null)
-    const handlePasswordShow = () => {
-        setIsPasswordShowed((prev) => !prev)
-        passwordFieldElem.current.type = !isPasswordShowed ? 'text' : 'password'
-    }
+    const passFieldAdmElem = useRef(null)
+    const emailFieldAdmElem = useRef(null)
 
     let navigate = useNavigate();
 
-    const registration = () => {
-        navigate('/registration')
-    }
     const login = async () => {
         if (email !== '' && pass !== '') {
-            const response = await sendPostRequest(`/app/`, {
+            const response = await sendPostRequest(`/app/admin`, {
                 "email": email,
                 "password": pass
             })
             if (response.error) {
-                if (response.error === "User is not exist") {
+                if (response.error === "Admin is not exist") {
                     setIsUserExist(false)
-                    // setIsRightPass(false)
                 }
                 else if (response.error === "Incorrect password") {
                     setIsRightPass(false)
                 }
             }
-            else if (response.message === "User signed in") {
+            else if (response.message === "Admin signed in") {
                 sessionStorage.setItem("isLoggedIn", response.id);
+                sessionStorage.setItem("isAdmin", true);
                 navigate(`/account:${response.id}`)
             }
         }
     }
 
     useEffect(() => {
-        !isRightPass ? passwordFieldElem.current.style.borderColor = 'red' : passwordFieldElem.current.style.borderColor = ''
-        !isUserExist ? EmailField.current.style.borderColor = 'red' : EmailField.current.style.borderColor = ''
+        !isRightPass ? passFieldAdmElem.current.style.borderColor = 'red' : passFieldAdmElem.current.style.borderColor = ''
+        !isUserExist ? emailFieldAdmElem.current.style.borderColor = 'red' : emailFieldAdmElem.current.style.borderColor = ''
     }, [isUserExist, isRightPass])
+
+    const onChangeEmailField = (e) => {
+        setEmail(e.target.value)
+        setIsUserExist(true)
+        setIsRightPass(true)
+    }
+
+    const onChangePasswordField = (e) => {
+        setPass(e.target.value)
+        setIsUserExist(true)
+        setIsRightPass(true)
+    }
+
+    const handlePasswordShow = () => {
+        setIsPasswordShowed((prev) => !prev)
+        passFieldAdmElem.current.type = !isPasswordShowed ? 'text' : 'password'
+    }
 
     return (
         <>
             <div className="App">
                 <div className="AppWrapperVert">
-                    <h1 style={{ textAlign: "center" }}>Log in</h1>
+                    <h1 style={{ textAlign: "center" }}>Log in as admin</h1>
                     <Input
-                        ref={EmailField}
+                        ref={emailFieldAdmElem}
                         type="email"
                         placeholder="email@email.ru"
                         value={email}
-                        onChange={(e) => { setEmail(e.target.value); setIsUserExist(true); setIsRightPass(true) }}
+                        onChange={(e) => { onChangeEmailField(e) }}
                     ></Input>
                     <div style={{ position: 'relative' }}>
                         <Input
-                            ref={passwordFieldElem}
+                            ref={passFieldAdmElem}
                             type="password"
                             placeholder="password"
                             value={pass}
-                            onChange={(e) => { setPass(e.target.value); setIsUserExist(true); setIsRightPass(true) }}
+                            onChange={(e) => { onChangePasswordField(e) }}
                         ></Input>
                         <ChangeVievButton isUsed={isPasswordShowed} srcIsUsed={closetEye} srcNotUsed={eye} onClick={handlePasswordShow} ></ChangeVievButton>
                     </div>
                     <div className="AppWrapperHor" style={{ position: 'relative' }}>
                         <Button onClick={() => login()}>log in</Button>
-                        <Button onClick={() => registration()}>sign up</Button>
-                        {!isUserExist ? <div style={{ color: 'red', textAlign: "center", position: 'absolute', top: -99 }}>user does not exist</div> : <></>}
+                        {!isUserExist ? <div style={{ color: 'red', textAlign: "center", position: 'absolute', top: -99 }}>admin does not exist</div> : <></>}
                         {!isRightPass ? <div style={{ color: 'red', textAlign: "center", position: 'absolute', top: -26 }}>wrong password</div> : <></>}
                     </div>
                 </div>
@@ -88,5 +97,3 @@ function Login() {
         </>
     );
 }
-
-export default Login;

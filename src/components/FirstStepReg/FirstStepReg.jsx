@@ -31,7 +31,7 @@ function FirstStepReg({ handleClick }) {
     confPasswordFieldElem.current.type = !isConfPasswordShowed ? 'text' : 'password'
   }
 
-  const confirmAuthData = (func, arg) => {
+  const confirmAuthData = (arg) => {
     if (!(email.indexOf('@') !== -1 && email.indexOf('.') !== -1)) {
       alert('wrong email format')
     }
@@ -40,7 +40,7 @@ function FirstStepReg({ handleClick }) {
     }
     else {
       context.setFunction({ email, password })
-      func(arg)
+      handleClick(arg)
     }
   };
 
@@ -83,7 +83,7 @@ function FirstStepReg({ handleClick }) {
           </div>
           <div className="AppWrapperHor">
             <Button onClick={() => backToLogin()}>log in</Button>
-            <Button onClick={() => confirmAuthData(handleClick, 0)}>next</Button>
+            <Button onClick={() => confirmAuthData(0)}>next</Button>
           </div>
         </div>
       </div>

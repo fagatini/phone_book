@@ -50,7 +50,15 @@
   align-items: center;
   flex-direction: row;
   width: 100vw;
-  /* padding-top: 100px; */
+}
+
+.externalBlockVert {
+  display: flex;
+  justify-content: space-around;
+  height: calc(100vh - 70px);
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
 }
 
 .vertBlock {
@@ -59,20 +67,37 @@
   justify-content: center;
 }
 
+.horBlock {
+  display: flex;
+  flex-direction: row;
+}
+
 .header {
   width: 100vw;
   height: 70px;
   background: linear-gradient(to bottom right, rgb(94, 94, 232), rgb(232, 94, 195));
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.logoStyle {
+  width: 60px;
+  padding: 5px;
 }
 
 .dataWrapper {
   display: flex;
   justify-content: space-evenly;
-  /* height: calc(100vh - 70px); */
   height: fit-content;
   align-items: flex-start;
   flex-direction: row;
   width: 100%;
+}
+
+.pictureSizeLittleLine {
+  width: 50px;
+  height: 50px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

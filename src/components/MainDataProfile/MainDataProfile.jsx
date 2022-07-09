@@ -10,7 +10,7 @@ export const MainDataProfile = ({ isShowBd, children }) => {
             <div className="vertBlock ColorStyle">
                 <div className='divInfo' style={{ justifyContent: 'center' }} > {children.FCs.firstName} {children.FCs.midleName} {children.FCs.secondName}</div>
                 <hr style={{ width: 100 }}></hr>
-                <div className='divInfo' style={{ justifyContent: 'center' }}> {children.birthdate} {isShowBd ? (<div>(show)</div>) : (<div>(not show)</div>)}</div>
+                <div className='divInfo' style={{ justifyContent: 'center' }}> {children.birthdate} {isShowBd ? (<div>(shown)</div>) : (<div>(hidden)</div>)}</div>
             </div >
         </div >
     )

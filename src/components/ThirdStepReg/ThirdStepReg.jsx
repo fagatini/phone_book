@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { useContext, useState, useRef } from "react";
 import Button from "../Button/Button";
@@ -6,7 +7,6 @@ import { ThirdStepContext } from "../../context/thirdStepContext";
 import Textarea from "../Textarea/Textarea";
 import ThirdStepRstyle from './ThirdStepRstyle.css'
 import profile from '../../pictures/profile.png';
-import { useEffect } from "react";
 
 function ThirdStepReg({ handleClick }) {
   const context = useContext(ThirdStepContext)
@@ -29,9 +29,9 @@ function ThirdStepReg({ handleClick }) {
     }
   }
 
-  const confirmSubData = (func, arg) => {
+  const confirmSubData = (arg) => {
     context.setFunction({ department, post, workPlace, aboutMe, photoURL })
-    func(arg)
+    handleClick(arg)
   }
 
   return (
@@ -77,8 +77,8 @@ function ThirdStepReg({ handleClick }) {
             </div>
           </div>
           <div className="AppWrapperHor">
-            <Button onClick={() => confirmSubData(handleClick, 0)}>back</Button>
-            <Button onClick={() => confirmSubData(handleClick, 2)}>create</Button>
+            <Button onClick={() => confirmSubData(0)}>back</Button>
+            <Button onClick={() => confirmSubData(2)}>create</Button>
           </div>
         </div>
       </div>

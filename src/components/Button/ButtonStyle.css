@@ -1,7 +1,9 @@
 .ButtonStyle{
     color: black;
     width: 100px;
-    height: 44px;
+    /* min-height: 44px; */
+    padding: 9px;
+    height: fit-content;
     /* padding-top: 6px;
     padding-bottom: 6px;
     height: fit-content; */
