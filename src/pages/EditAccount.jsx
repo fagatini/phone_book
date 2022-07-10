@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
 import React from "react";
-import FirstStepReg from "../components/FirstStepReg/FirstStepReg";
-import SecondStepReg from "../components/SecondStepReg/SecondStepReg";
-import ThirdStepReg from "../components/ThirdStepReg/ThirdStepReg";
 import { FirstStepContext } from "../context/firstStepContext";
 import { SecondStepContext } from "../context/secondStepContext";
 import { ThirdStepContext } from "../context/thirdStepContext";
-import { sendEditRequest, sendGetRequest } from "../axios/hooks";
+import { sendPostRequest, sendGetRequest } from "../axios/hooks";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import profile from '../pictures/profile.png';
+import FirstStepEdit from "../components/FirstStepEdit/FirstStepEdit";
+import SecondStepEdit from "../components/SecondStepEdit/SecondStepEdit";
+import ThirdStepEdit from "../components/ThirdStepEdit/ThirdStepEdit";
 
 function EditAccount() {
     const param = useParams();
@@ -38,7 +38,7 @@ function EditAccount() {
     useEffect(() =>
         (async () => {
             if (step === 3) {
-                const response = await sendEditRequest(`/app/account/edit/${param.accountId}`, {
+                const response = await sendPostRequest(`/app/account/edit/${param.accountId}`, {
                     "email": authData.email,
                     "password": authData.password,
                     "first_name": mainData.firstName,
@@ -55,7 +55,18 @@ function EditAccount() {
                     "about_me": subData.aboutMe,
                     "photo_url": subData.photoURL
                 })
-                navigate(`/account:${param.accountId}`)
+                if (response.error) {
+                    if (response.error === "Email is already used") {
+                        setStep(1)
+                        alert('email is already used')
+                    }
+                }
+                else if (response.message) {
+                    if (response.message === "user changed") {
+                        let id = sessionStorage.getItem("isLoggedIn")
+                        navigate(`/account:${id}`)
+                    }
+                }
             }
         }
         )(), [step])
@@ -64,17 +75,18 @@ function EditAccount() {
         setStep(currentStep + 1)
     };
 
+
     if (step === 0) {
         return (
             <FirstStepContext.Provider value={{ ...authData, setFunction: setAuthData }}>
-                <FirstStepReg handleClick={handleClick}></FirstStepReg>
+                <FirstStepEdit handleClick={handleClick}></FirstStepEdit>
             </FirstStepContext.Provider>
         );
     } else if (step === 1) {
         return (
             <>
                 <SecondStepContext.Provider value={{ ...mainData, setFunction: setMainData }}>
-                    <SecondStepReg handleClick={handleClick}></SecondStepReg>
+                    <SecondStepEdit handleClick={handleClick}></SecondStepEdit>
                 </SecondStepContext.Provider>
             </>
         );
@@ -82,7 +94,7 @@ function EditAccount() {
         return (
             <>
                 <ThirdStepContext.Provider value={{ ...subData, setFunction: setSubData }}>
-                    <ThirdStepReg handleClick={handleClick}></ThirdStepReg>
+                    <ThirdStepEdit handleClick={handleClick}></ThirdStepEdit>
                 </ThirdStepContext.Provider>
             </>
         );

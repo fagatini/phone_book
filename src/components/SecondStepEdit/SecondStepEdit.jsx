@@ -4,11 +4,11 @@ import Button from "../Button/Button";
 import Input from "../Input/Input";
 import { SecondStepContext } from "../../context/secondStepContext";
 import AddButton from "../AddButton/AddButton";
-import plus from '../../pictures/add.png'
 import xmark from '../../pictures/close.png'
+import plus from '../../pictures/add.png'
 import CheckboxInput from "../CheckboxInput/CheckboxInput";
 
-function SecondStepReg({ handleClick }) {
+function SecondStepEdit({ handleClick }) {
   const context = useContext(SecondStepContext)
 
   const [firstName, setFirstName] = useState(context.firstName || "");
@@ -26,7 +26,6 @@ function SecondStepReg({ handleClick }) {
     newNumbers[index] = e.target.value
     setPhoneNumber(newNumbers)
   }
-
   const handleOnClick = () => {
     setPhoneNumber([...phoneNumber, ''])
   }
@@ -64,7 +63,7 @@ function SecondStepReg({ handleClick }) {
     <>
       <div className="App">
         <div className="AppWrapperVert">
-          <h1 style={{ textAlign: "center" }}>Registration: step 2</h1>
+          <h1 style={{ textAlign: "center" }}>Edit account: step 2</h1>
           <Input
             type="text"
             placeholder="first name"
@@ -128,4 +127,4 @@ function SecondStepReg({ handleClick }) {
   );
 }
 
-export default SecondStepReg;
+export default SecondStepEdit;

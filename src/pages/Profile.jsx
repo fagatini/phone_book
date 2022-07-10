@@ -34,7 +34,7 @@ export const Profile = () => {
                 setMainData({ firstName: response.mainInfo.first_name, midleName: response.mainInfo.midle_name, secondName: response.mainInfo.second_name, birthDate: response.mainInfo.birthdate.slice(0, 10), workPhoneNum: response.mainInfo.job_phone_num })
                 setSubData({ department: response.mainInfo.department, post: response.mainInfo.post, workPlace: response.mainInfo.workplace, aboutMe: response.mainInfo.about_me, photoURL: response.mainInfo.photo_url ? response.mainInfo.photo_url : profile })
                 setPhoneNumber(response.phoneNumbers.map((number, index) => response.phoneNumbers[index].phone_number))
-                setOptions({ isAccDeleted: response.is_deleted_acc, isShowBirthdate: response.is_show_bd, isShowNums: response.is_show_num })
+                setOptions({ isAccDeleted: response.mainInfo.is_deleted_acc, isShowBirthdate: response.mainInfo.is_show_bd, isShowNums: response.mainInfo.is_show_num })
                 const accessResponse = await sendGetRequest(`/app/account/access/${param.accountId}`)
                 if (accessResponse) {
                     setAccesses(accessResponse)
@@ -45,6 +45,7 @@ export const Profile = () => {
     }, [param.accountId])
 
     const DeleteAcc = async () => {
+        navigate('/')
         await sendEditRequest(`/app/account/${param.accountId}`, { "state": true })
     }
 

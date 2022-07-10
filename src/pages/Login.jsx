@@ -42,6 +42,9 @@ function Login() {
                 else if (response.error === "Incorrect password") {
                     setIsRightPass(false)
                 }
+                else if (response.error === "User deleted") {
+                    alert("user deleted")
+                }
             }
             else if (response.message === "User signed in") {
                 sessionStorage.setItem("isLoggedIn", response.id);

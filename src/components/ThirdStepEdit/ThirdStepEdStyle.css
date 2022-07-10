@@ -1,0 +1,16 @@
+.PicStyle{
+    /* max-width: 120px; */
+    /* max-height: 120px; */
+    width: 130px;
+    margin-bottom: 30px;
+}
+
+input[type="file"]{
+    display: none;
+}
+
+.horizontCenter{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

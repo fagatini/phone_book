@@ -4,12 +4,15 @@ import Login from "./pages/Login";
 import Registration from "./pages/Registration";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Profile } from "./pages/Profile";
+
 import { RequireIdAuth } from "./utils/RequireIdAuth";
+import { RequireAdmin } from "./utils/RequireAdmin";
+import { RequireAuth } from "./utils/RequireAuth";
 import { AdminLogin } from "./pages/AdminLogin";
 import { AllAccountsPage } from "./pages/AllAccountsPage";
-import { RequireAuth } from "./utils/RequireAuth";
 import { NotMyProfile } from "./pages/NotMyProfile";
 import EditAccount from "./pages/EditAccount";
+import { AdminAccesses } from "./pages/AdminAccesses";
 
 function App() {
   return (
@@ -50,6 +53,15 @@ function App() {
             </RequireIdAuth>
           }
         />
+        <Route
+          path="/admin/accesses"
+          element={
+            <RequireAdmin>
+              <AdminAccesses />
+            </RequireAdmin>
+          }
+        />
+
         <Route path="/admin" element={<AdminLogin />} />
       </Routes>
     </BrowserRouter>
