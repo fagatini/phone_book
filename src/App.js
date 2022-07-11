@@ -13,6 +13,7 @@ import { AllAccountsPage } from "./pages/AllAccountsPage";
 import { NotMyProfile } from "./pages/NotMyProfile";
 import EditAccount from "./pages/EditAccount";
 import { AdminAccesses } from "./pages/AdminAccesses";
+import { AdminDeletedAccs } from "./pages/AdminDeletedAccs";
 
 function App() {
   return (
@@ -61,7 +62,14 @@ function App() {
             </RequireAdmin>
           }
         />
-
+        <Route
+          path="/admin/accounts"
+          element={
+            <RequireAdmin>
+              <AdminDeletedAccs />
+            </RequireAdmin>
+          }
+        />
         <Route path="/admin" element={<AdminLogin />} />
       </Routes>
     </BrowserRouter>

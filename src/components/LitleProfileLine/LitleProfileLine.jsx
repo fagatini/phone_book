@@ -1,10 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import { useState } from 'react'
 import { LitleProfileLineStyle } from './LitleProfileLineStyle.css'
 import profile from '../../pictures/profile.png';
 import arrow from '../../pictures/right-arrow.png';
-import { useNavigate, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const LitleProfileLine = ({ Account }) => {
     let navigate = useNavigate();
