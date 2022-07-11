@@ -8,22 +8,3 @@
     line-height: 20px;
     margin-bottom: 30px;
 }
-
-/* input:invalid::after {
-    border-color: green;
-} */
-
-/* input:invalid {
-    border-color: red;
-} */
-/* 
-input:invalid:not(:focus) {
-    border-color: red;
-} */
-/* input:valid {
-    background-color: green;
-} */
-
-/* input::after{
-    background-color: green;
-} */

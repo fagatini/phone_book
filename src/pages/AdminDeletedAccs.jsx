@@ -26,7 +26,6 @@ export const AdminDeletedAccs = () => {
         (
             async () => {
                 const response = await sendGetRequest(`/app/admin/accounts`)
-                console.log(response)
                 if (response) {
                     setDeletedAccounts(response)
                 }
@@ -40,7 +39,7 @@ export const AdminDeletedAccs = () => {
                 <img src={logo} className="logoStyle" alt='' onClick={(e) => toAllAccPage()}></img>
                 <img src={user} className="logoStyle" alt='' onClick={(e) => toProfile()}></img>
             </div>
-            <div className="externalBlockVert">
+            <div className="externalBlockVert" style={{ height: 'fit-content', padding: 11 }}>
                 <div>
                     {deletedAccounts.map((number, index) => (<div key={index} style={{ padding: 11 }}><LittleDelProfileLine Account={deletedAccounts[index]} /></div>)
                     )}
