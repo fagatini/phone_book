@@ -3,6 +3,7 @@ import React from 'react'
 import Button from '../Button/Button'
 import { sendEditRequest } from "../../axios/hooks";
 import { useState, useRef } from 'react'
+import AdminAccessStyle from './AdminAccessStyle.css'
 
 export const AdminAccess = ({ access, ...props }) => {
     const acceptButton = useRef(null)
@@ -32,8 +33,7 @@ export const AdminAccess = ({ access, ...props }) => {
     }
 
     return (
-        <div>
-            {access.id_access !== 1 ? <hr style={{ width: 200 }}></hr> : <></>}
+        <div className='ColorStyle accessBlock'>
             <div>{recName} requested access from {givName}</div>
             <div>state: {access.state}</div>
             <div>was requested {access.data.slice(0, 10)}</div>

@@ -66,6 +66,9 @@ function EditAccount() {
                         let id = sessionStorage.getItem("isLoggedIn")
                         navigate(`/account:${id}`)
                     }
+                } else {
+                    setStep(1)
+                    alert('smth went wrong')
                 }
             }
         }
